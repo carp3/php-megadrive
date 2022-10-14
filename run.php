@@ -19,13 +19,9 @@ $arg = 'sonic.md';
 $loader = new Loader($argv[1] ?? $arg);
 $rom = $loader->load();
 echo sprintf("%s\n%s", $rom->getConsole(), $rom->getGlobalGameName());
-echo $rom->getConsole() . PHP_EOL;
-
-const WINDOW_WIDTH = 320;
-const WINDOW_HEIGHT = 240;
 
 SDL_Init(SDL_INIT_VIDEO);
-$window = SDL_CreateWindow($rom->getGlobalGameName(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+$window = SDL_CreateWindow($rom->getGlobalGameName(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 320, 240, SDL_WINDOW_SHOWN);
 $renderer = SDL_CreateRenderer($window, 0, SDL_RENDERER_ACCELERATED);
 
 SDL_UpdateWindowSurface($window);

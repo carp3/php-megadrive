@@ -34,8 +34,9 @@ $md = new MegaDrive($rom, $renderer);
 $time = microtime(true);
 $fps = 0;
 $event = new SDL_Event;
-for ($fc = 0; $fc < 10000; $fc++) {
-    if ($fc % 100 === 0) {
+$fc = 0;
+for (; ;) {
+    if ($fc++ % 100 === 0) {
         echo "FPS: " . (($fc - $fps)) / (microtime(true) - $time) . PHP_EOL;
     }
 
@@ -109,8 +110,6 @@ for ($fc = 0; $fc < 10000; $fc++) {
             break;
     }
 }
-$i = 0;
-
 echo sprintf('Total execution time: %s seconds', microtime(true) - $time);
 SDL_DestroyRenderer($renderer);
 SDL_DestroyWindow($window);
